@@ -3,7 +3,7 @@
 I just finished a 15-day SQL Deep Dive Challenge with Codebasics, led by Dhaval Patel, Hemanand Vadivel, and Naveen S. This repo is where I'm putting the whole journey together. One SQL concept a day. Real queries, real databases, real learning out in the open.
 
 **Author:** Sachin (Vishnu Ram Sachin D)
-**LinkedIn:** [vishnu-ramsachin-d](https://www.linkedin.com/in/vishnu-ramsachin-d)
+**LinkedIn:** [vishnu-ram-sachin-d] (https://www.linkedin.com/in/vishnu-ram-sachin-d)
 **GitHub:** [Sachin-Analyst](https://github.com/Sachin-Analyst)
 
 ---
