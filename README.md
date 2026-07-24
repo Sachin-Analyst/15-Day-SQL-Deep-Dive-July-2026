@@ -4,7 +4,7 @@ I just finished a 15-day SQL Deep Dive Challenge with Codebasics, led by Dhaval 
 
 **Author:** Sachin (Vishnu Ram Sachin D)
 
-**LinkedIn:** [vishnu-ram-sachin-d] (https://www.linkedin.com/in/vishnu-ram-sachin-d)
+**LinkedIn:** [Vishnu-Ram-Sachin-D] (https://www.linkedin.com/in/vishnu-ram-sachin-d-/)
 
 **GitHub:** [Sachin-Analyst](https://github.com/Sachin-Analyst)
 
