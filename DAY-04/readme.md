@@ -105,5 +105,5 @@ Watch on LinkedIn: [link]
 ## Files in This Folder
 
 - [DAY-04-Queries.sql](DAY-04-Queries.sql) -- full query file
-- DAY-04-Challenge.png -- challenge prompt
-- DAY-04-Thumbnail.png -- video thumbnail
+- [DAY-04-Challenge.png](DAY-04-Challenge.png) -- challenge prompt
+- [DAY-04-Thumbnail.png](DAY-04-Thumbnail.png) -- video thumbnail
