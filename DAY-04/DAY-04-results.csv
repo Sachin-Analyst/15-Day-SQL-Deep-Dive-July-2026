@@ -1,0 +1,86 @@
+city,product,Total_sales
+Ahmedabad,Biscuits,345
+Ahmedabad,Mouse,1180
+Ahmedabad,Phone,58500
+Ahmedabad,Shoes,5450
+Ahmedabad,"Sugar Pack",740
+Ahmedabad,T-Shirt,2350
+Ahmedabad,NULL,68565
+Bangalore,Laptop,89000
+Bangalore,"Oil Can",2150
+Bangalore,Phone,55500
+Bangalore,"Rice Bag",1850
+Bangalore,Shoes,5250
+Bangalore,T-Shirt,2050
+Bangalore,NULL,155800
+Chennai,Biscuits,330
+Chennai,Jeans,4300
+Chennai,Laptop,98000
+Chennai,Mouse,1050
+Chennai,"Rice Bag",1650
+Chennai,T-Shirt,2500
+Chennai,NULL,107830
+Delhi,Jacket,7500
+Delhi,Jeans,5150
+Delhi,Laptop,103000
+Delhi,"Oil Can",2450
+Delhi,Phone,61500
+Delhi,"Rice Bag",1950
+Delhi,NULL,181550
+Hyderabad,Biscuits,310
+Hyderabad,Headphones,9800
+Hyderabad,Jacket,6500
+Hyderabad,Mouse,3900
+Hyderabad,"Sugar Pack",620
+Hyderabad,T-Shirt,2100
+Hyderabad,NULL,23230
+Jaipur,Biscuits,290
+Jaipur,Headphones,4750
+Jaipur,Mouse,1380
+Jaipur,Shoes,4950
+Jaipur,"Sugar Pack",670
+Jaipur,T-Shirt,2150
+Jaipur,NULL,14190
+Kolkata,Biscuits,410
+Kolkata,Jeans,4900
+Kolkata,Laptop,93000
+Kolkata,Phone,55000
+Kolkata,"Rice Bag",46070
+Kolkata,Shoes,5850
+Kolkata,NULL,205230
+Lucknow,Biscuits,330
+Lucknow,Jacket,5950
+Lucknow,Laptop,87500
+Lucknow,Phone,53500
+Lucknow,"Rice Bag",3150
+Lucknow,T-Shirt,1950
+Lucknow,NULL,152380
+Mumbai,Headphones,4100
+Mumbai,Jacket,7100
+Mumbai,"Oil Can",2350
+Mumbai,Phone,59000
+Mumbai,Shoes,5500
+Mumbai,"Sugar Pack",750
+Mumbai,NULL,78800
+Patna,Biscuits,390
+Patna,Jacket,6150
+Patna,Mouse,3650
+Patna,"Oil Can",1980
+Patna,Phone,52500
+Patna,T-Shirt,1950
+Patna,NULL,66620
+Pune,Headphones,4350
+Pune,Jacket,6750
+Pune,Jeans,4550
+Pune,Laptop,91500
+Pune,"Oil Can",2250
+Pune,"Rice Bag",1750
+Pune,NULL,111150
+Ranchi,Headphones,9650
+Ranchi,Jeans,4750
+Ranchi,Laptop,85500
+Ranchi,"Rice Bag",3350
+Ranchi,Shoes,5250
+Ranchi,"Sugar Pack",640
+Ranchi,NULL,109140
+NULL,NULL,1274485
