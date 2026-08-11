@@ -67,6 +67,8 @@ Prashant and Mahesh are tied at 72 marks, both at rank 5.
 | 5    | Prashant | 72    |
 | 5    | Mahesh   | 72    |
 
+Top 5 results : [DAY-03-Top-5-results.csv](./DAY-03-Top-5-results.csv)
+
 If `LIMIT 5` had been used instead of DENSE_RANK, Mahesh would have been cut
 silently -- despite scoring exactly the same as Prashant. This is the
 dealer #6 problem from the challenge, reproduced in the actual data.
