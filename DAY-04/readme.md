@@ -56,22 +56,33 @@ misleading row:
 |---------|---------|-------------|
 | Chennai | Laptop  | 107830      |
 
-**Fixed query** (`GROUP BY city, product WITH ROLLUP`) -- every product
-gets its own honest row, grouped by category, with one subtotal line:
+**Fixed query** (`GROUP BY city, product WITH ROLLUP`), run against the
+full dataset of 11 cities -- every product gets its own honest row, and
+ROLLUP automatically appends a subtotal row per city (product = NULL) plus
+one grand total row at the very end (city = NULL, product = NULL).
 
-| Category    | Product   | Total_sales |
-|-------------|-----------|-------------|
-| Electronics | Laptop    | 98000       |
-| Electronics | Mouse     | 1050        |
-| Groceries   | Rice Bag  | 1650        |
-| Groceries   | Biscuits  | 330         |
-| Clothing    | T-Shirt   | 2500        |
-| Clothing    | Jeans     | 4300        |
-| --          | **Total** | **107830**  |
+Chennai's slice of the output:
 
-Same total sales figure either way -- SUM(sales) was never wrong. What was
-wrong was the product label sitting next to it, silently misrepresenting
-six rows as one.
+| City    | Product   | Total_sales |
+|---------|-----------|-------------|
+| Chennai | Biscuits  | 330         |
+| Chennai | Jeans     | 4300        |
+| Chennai | Laptop    | 98000       |
+| Chennai | Mouse     | 1050        |
+| Chennai | Rice Bag  | 1650        |
+| Chennai | T-Shirt   | 2500        |
+| Chennai | **NULL**  | **107830**  |
+
+That NULL row isn't a bug -- it's ROLLUP's built-in subtotal marker,
+automatically summing every product above it for that city.
+
+Full output across all 11 cities: [DAY-04-results.csv](DAY-04-results.csv)
+
+Grand total (final row, city = NULL, product = NULL): **1,274,485**
+
+Same total sales figure the query was always producing correctly -- what
+was wrong before was only the product label sitting next to it, silently
+misrepresenting six rows as one.
 
 ## Applying the Concept
 
@@ -91,6 +102,23 @@ onward, and this challenge ran on MySQL 8.0.28. So the actual fix used was
 WITH ROLLUP instead: same two levels of totals, plus one extra grand total
 row added on top.
 
+Chennai's slice of this second query:
+
+| City    | Category    | Total_sales |
+|---------|-------------|-------------|
+| Chennai | Clothing    | 6800        |
+| Chennai | Electronics | 99050       |
+| Chennai | Groceries   | 1980        |
+| Chennai | **NULL**    | **107830**  |
+
+Full output across all 11 cities: [DAY-04-Bonus-results.csv](DAY-04-Bonus-results.csv)
+
+The grand total row here (city = NULL, category = NULL) is also
+**1,274,485** -- identical to the grand total from the city+product
+version above. Two completely different groupings of the same data,
+landing on the exact same number. That match is the real confirmation
+that both ROLLUP queries are correct, not just plausible.
+
 ## Key Takeaway
 
 This wasn't really about syntax. It's that a query running without an
@@ -105,5 +133,7 @@ Watch on LinkedIn: [link]
 ## Files in This Folder
 
 - [DAY-04-Queries.sql](DAY-04-Queries.sql) -- full query file
-- [DAY-04-Challenge.png](DAY-04-Challenge.png) -- challenge prompt
-- [DAY-04-Thumbnail.png](DAY-04-Thumbnail.png) -- video thumbnail
+- [DAY-04-results.csv](DAY-04-results.csv) -- city + product ROLLUP output, all 11 cities
+- [DAY-04-Bonus-results.csv](DAY-04-Bonus-results.csv) -- city + category ROLLUP output, all 11 cities
+- DAY-04-Challenge.png -- challenge prompt
+- DAY-04-Thumbnail.png -- video thumbnail
