@@ -79,4 +79,4 @@ decides -- a discount, a scholarship, a gift. LIMIT 5 doesn't just cut off
 rows. It can remove a reward someone genuinely earned.
 
 ## Video Walkthrough
-Watch on LinkedIn: [link]
+Watch on LinkedIn: [Video-presentation-link](https://www.linkedin.com/posts/vishnu-ram-sachin-d-_sql-dataanalytics-codebasics-activity-7480582635006648320-We4j?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-YjK4B1ekkuKaP0cSvVwYi6kAAiCTAQhY)
