@@ -48,6 +48,7 @@ SELECT *
 FROM CTE1
 WHERE rnk BETWEEN 1 AND 5;
 ```
+Full query file: [DAY-03-Queries.sql](DAY-03-Queries.sql)
 
 ## Results
 
