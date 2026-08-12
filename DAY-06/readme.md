@@ -75,6 +75,29 @@ from the left table) was never interfered with.
 
 Full query file: [DAY-06-Queries.sql](DAY-06-Queries.sql)
 
+## Results
+
+Running the fixed query -- `AND o.status = 'delivered'` inside ON -- against
+the full 20-customer table:
+
+| Outcome                                    | Count |
+|---------------------------------------------|-------|
+| Customers with delivered orders (real rows) | 12    |
+| Delivered order rows returned               | 78    |
+| Customers with zero orders (NULL rows kept) | 8     |
+| Total customers represented                 | 20    |
+
+All 20 customers show up in the output -- the 12 who ordered, each with
+every one of their delivered orders listed, and the 8 who never ordered
+at all, each kept as a single row with `order_id` and `status` as NULL
+instead of being silently dropped.
+
+Full output: [DAY-06-results.csv](DAY-06-results.csv)
+
+That's the fix proven directly: LEFT JOIN's core guarantee -- every row
+from the left table survives -- holds exactly as it should once the
+status condition moved into ON instead of WHERE.
+
 ## Applying the Concept
 
 Bonus question: with 100 customers, 30 of whom never ordered, a LEFT JOIN
@@ -101,12 +124,22 @@ NULL placeholder rows, one per customer who never ordered. Filtering on
 cutoff date is.
 
 That leaves the 144 real order rows to be tested individually against the
-date condition. Running the query:
+date condition. The confirmed output:
 
-121 rows survived. So of the 144 real orders, 23 had an `order_date` on
+Full output: [DAY-06-Bonus-results.csv](DAY-06-Bonus-results.csv)
+
+**122 rows survived.** Of the 144 real orders, 22 had an `order_date` on
 or before 2024-01-01 and were correctly filtered out -- and all 8
 never-ordered customers were dropped as expected, for the NULL reason
 above rather than a genuine failed comparison.
+
+One customer disappears from the results entirely: Arjun Kumar. All of
+his orders had dates on or before the cutoff, so despite having 6
+delivered orders in the unfiltered results, none of them satisfy
+`order_date > '2024-01-01'` -- his customer row doesn't survive the
+filter at all, even though he's a real customer with real order history.
+That's the same WHERE-after-JOIN mechanic from earlier in this challenge,
+just triggered by a date condition instead of a status condition.
 
 ## Key Takeaway
 
@@ -124,5 +157,7 @@ Watch on LinkedIn: [link]
 ## Files in This Folder
 
 - [DAY-06-Queries.sql](DAY-06-Queries.sql) -- full query file
+- [DAY-06-results.csv](DAY-06-results.csv) -- fixed query output, all 20 customers
+- [DAY-06-Bonus-results.csv](DAY-06-Bonus-results.csv) -- date-filtered results, 122 surviving rows
 - DAY-06-Challenge.png -- challenge prompt
 - DAY-06-Thumbnail.png -- video thumbnail
