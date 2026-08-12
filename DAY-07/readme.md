@@ -83,6 +83,20 @@ matching the true total exactly.
 
 Full query file: [DAY-07-Queries.sql](DAY-07-Queries.sql)
 
+## Results
+
+Running the fixed subquery against the full 144-order dataset:
+
+| total_revenue |
+|----------------|
+| 1231965        |
+
+Full output: [DAY-07-results.csv](DAY-07-results.csv)
+
+This matches the true total from `SELECT SUM(sales) FROM orders` exactly
+-- confirming the DISTINCT-wrapped subquery fully undoes the fan-out
+caused by the join, with no revenue lost or double-counted.
+
 ## Applying the Concept
 
 Bonus question: after the join, which one actually counts real orders --
@@ -102,6 +116,15 @@ with 2 items contributes 2 to this count, same fan-out problem as SUM.
 -- `COUNT(DISTINCT o.order_id)` returns 144 -- the actual number of
 orders, because it only counts unique `order_id` values regardless of how
 many item rows each one produced.
+
+Confirmed output, both counts run side by side against the same joined
+data:
+
+| row_count_wrong | real_order_count |
+|-------------------|---------------------|
+| 288                | 144                  |
+
+Full output: [DAY-07-Bonus-results.csv](DAY-07-Bonus-results.csv)
 
 `COUNT(DISTINCT o.order_id)` is the right choice here. It counts unique
 orders, not the extra rows the join creates -- the same underlying fix as
@@ -128,5 +151,7 @@ Watch on LinkedIn: [link]
 ## Files in This Folder
 
 - [DAY-07-Queries.sql](DAY-07-Queries.sql) -- full query file
+- [DAY-07-results.csv](DAY-07-results.csv) -- fixed total_revenue output
+- [DAY-07-Bonus-results.csv](DAY-07-Bonus-results.csv) -- COUNT(*) vs COUNT(DISTINCT) comparison
 - DAY-07-Challenge.png -- challenge prompt
 - DAY-07-Thumbnail.png -- video thumbnail
