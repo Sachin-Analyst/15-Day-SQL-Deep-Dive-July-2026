@@ -114,9 +114,16 @@ The difference is simple:
 IS NULL     → TRUE when the value is NULL
 ```
 
-Full query file: DAY-02-Queries.sql
+Full query file: [DAY-02-Queries.sql](DAY-02-Queries.sql)
 
 ## Results
+
+Running the corrected query against the `movies` table surfaces the one
+row with a missing IMDb rating:
+
+| movie_id | title | industry | release_year | imdb_rating | studio | language_id |
+| -------- | ----- | -------- | ------------ | ----------- | ------ | ----------- |
+| 131 | Sanju | Bollywood | 2018 | NULL | Vinod Chopra Films | 1 |
 
 The incorrect query:
 
@@ -125,7 +132,7 @@ SELECT * FROM movies
 WHERE imdb_rating = NULL;
 ```
 
-returned 0 rows.
+returned **0 rows**.
 
 The corrected query:
 
@@ -134,7 +141,9 @@ SELECT * FROM movies
 WHERE imdb_rating IS NULL;
 ```
 
-surfaced Sanju (`movie_id = 131`).
+returned **Sanju (`movie_id = 131`)**.
+
+Full output: [DAY-02-results.csv](DAY-02-results.csv)
 
 This also answers the original Codebasics challenge:
 
@@ -211,10 +220,11 @@ Watch on LinkedIn: [link]
 
 ## Files in This Folder
 
-- DAY-02-Queries.sql -- query file
-- DAY-02-Challenge.png -- Codebasics Day 2 prompt
-- DAY-02-Query-Attempts.png -- queries run on the movies table
-- DAY-02-Sanju-NULL-Visible.png -- Sanju's blank imdb_rating in the result grid
-- DAY-02-IS-NULL-Query.png -- IS NULL query
-- DAY-02-IS-NULL-Result.png -- Sanju surfaced by IS NULL
-- DAY-02-Thumbnail.png -- video thumbnail
+- [DAY-02-Queries.sql](DAY-02-Queries.sql) -- query file
+- [DAY-02-results.csv](DAY-02-results.csv) -- full query output
+- [DAY-02-Challenge.png](DAY-02-Challenge.png) -- Codebasics Day 2 prompt
+- [DAY-02-Query-Attempts.png](DAY-02-Query-Attempts.png) -- queries run on the movies table
+- [DAY-02-Sanju-NULL-Visible.png](DAY-02-Sanju-NULL-Visible.png) -- Sanju's blank imdb_rating in the result grid
+- [DAY-02-IS-NULL-Query.png](DAY-02-IS-NULL-Query.png) -- IS NULL query
+- [DAY-02-IS-NULL-Result.png](DAY-02-IS-NULL-Result.png) -- Sanju surfaced by IS NULL
+- [DAY-02-Thumbnail.png](DAY-02-Thumbnail.png) -- video thumbnail
