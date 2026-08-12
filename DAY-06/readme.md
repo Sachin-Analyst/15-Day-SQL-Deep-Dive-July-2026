@@ -1,39 +1,128 @@
-SQL 15-Day Deep Dive, Day 6 of 15
+# Day 06 -- How WHERE Silently Turns a LEFT JOIN into an INNER JOIN
 
-You want every customer, including the ones who never ordered. LEFT JOIN is built exactly for this - keep everybody, matched or not.
+![Day 06 Thumbnail](DAY-06-Thumbnail.png)
 
+## Challenge
+
+![Day 06 Challenge](DAY-06-Challenge.png)
+
+Every customer is needed, including the ones who never ordered anything.
+LEFT JOIN is built exactly for this -- keep everybody, matched or not.
+
+```sql
 SELECT c.customer, o.order_id, o.status
 FROM customers c
 LEFT JOIN orders o ON c.customer_id = o.customer_id
 WHERE o.status = 'delivered';
+```
 
-Run it. Every customer with zero orders - silently gone. No error. No warning. LEFT JOIN never got touched. It just stopped behaving like one.
+Run it, and every customer with zero orders is silently gone. No error.
+No warning. LEFT JOIN itself was never touched -- it just stopped
+behaving like one.
 
--- As discussed in Day 2 null logic
-NULL isn't "no." It's SQL saying I don't know. WHERE only asks yes/no questions - it can't act on a question it can't answer.
+## Concept Covered
 
- A customer with a pending or cancelled order gets a real FALSE - genuine no, fair drop. A customer with no order at all gets UNKNOWN - never got a fair test to begin with. Same missing row on screen. Different reason underneath.
+-- NULL isn't "no." It's SQL saying *I don't know*. WHERE only asks
+yes/no questions -- it can't act on a question it can't actually answer.
 
-Fix - move the condition into AND instead of WHERE:
+-- Walking through what WHERE o.status = 'delivered' actually does to
+each customer:
 
+| Customer        | order status | 'status' = 'delivered' ? | Result |
+|------------------|--------------|---------------------------|--------|
+| Divya Rao        | delivered    | YES                       | keep   |
+| Karthik Reddy     | pending      | NO                        | drop   |
+| Meera Shah        | cancelled    | NO                        | drop   |
+| Rohan Deshmukh    | delivered    | YES                       | keep   |
+| Sneha Iyer        | NULL         | unknown                   | drop   |
+
+-- A customer with a pending or cancelled order gets a real FALSE --
+genuinely a no, a fair drop. A customer with no order at all gets
+UNKNOWN -- they never got a fair test to begin with. Same missing row on
+screen, completely different reason underneath.
+
+-- That one line, `WHERE o.status = 'delivered'`, is what turns a
+LEFT JOIN into an INNER JOIN. The join itself still runs correctly and
+produces NULL placeholder rows for unmatched customers -- WHERE is what
+throws those rows away afterward, because it can't tell the difference
+between "no" and "no answer."
+
+## Example Walkthrough
+
+Fix: move the condition into the join itself, using AND inside ON,
+instead of filtering with WHERE afterward.
+
+```sql
 SELECT c.customer, o.order_id, o.status
 FROM customers c
-LEFT JOIN orders o on c.customer_id = o.customer_id 
-AND o.status = 'delivered';
+LEFT JOIN orders o
+  ON c.customer_id = o.customer_id
+  AND o.status = 'delivered';
+```
 
-Here in the query we get the result , both customers who ordered and not ordered
+Inside ON, AND is evaluated as part of building the match itself, before
+LEFT JOIN decides which rows get a NULL placeholder:
 
-Bonus question today - my LEFT JOIN produces 152 rows, not 144. 144 real orders, plus 8 NULL placeholder rows - one per customer who never ordered.
- 
-Filter on order_date, those 8 drop guaranteed. The other 144 each get a real yes/no based on their actual date.
+| Customer        | status check          | Result |
+|------------------|------------------------|--------|
+| Divya Rao        | TRUE AND TRUE          | TRUE   |
+| Karthik Reddy     | TRUE AND (pending=FALSE)| FALSE  |
+| Sneha Iyer        | TRUE AND (NULL=unknown)| DROP (unmatched, but kept as a customer row) |
 
-121 Rows customers survived based on my database
+Every customer appears in the result now -- the ones who ordered and the
+ones who never did -- because LEFT JOIN's core guarantee (keep every row
+from the left table) was never interfered with.
 
-I rebuilt this on my Day 5 database - added customer_id, status, and order_date to orders, and a new customers table (customer_id, customer, city, region). 20 customers, 12 with real orders, 8 with none - so today's NULLs are real, not simulated.
+Full query file: [DAY-06-Queries.sql](DAY-06-Queries.sql)
 
-Answer query for today's challenge based on my understanding
+## Applying the Concept
 
- SELECT c.customer, o.order_id, o.status
- FROM customers c
- LEFT JOIN orders o ON c.customer_id = o.customer_id
-AND o.status = 'delivered';
+Bonus question: with 100 customers, 30 of whom never ordered, a LEFT JOIN
+is filtered afterward with `WHERE o.order_date > '2024-01-01'`. Roughly
+how many customers survive?
+
+```sql
+SELECT c.customer, o.order_id, o.status
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+WHERE o.order_date > '2024-01-01';
+```
+
+This challenge was rebuilt on the Day 05 database -- `customer_id`,
+`status`, and `order_date` added to orders, plus a new `customers` table
+(`customer_id`, `customer`, `city`, `region`). 20 customers total, 12
+with real orders, 8 with none -- so the NULLs here are real, not
+simulated.
+
+The unfiltered LEFT JOIN produces 152 rows: 144 real order rows, plus 8
+NULL placeholder rows, one per customer who never ordered. Filtering on
+`order_date` guarantees all 8 NULL rows drop -- NULL can never satisfy a
+`>` comparison, so those 8 customers vanish regardless of what the actual
+cutoff date is.
+
+That leaves the 144 real order rows to be tested individually against the
+date condition. Running the query:
+
+121 rows survived. So of the 144 real orders, 23 had an `order_date` on
+or before 2024-01-01 and were correctly filtered out -- and all 8
+never-ordered customers were dropped as expected, for the NULL reason
+above rather than a genuine failed comparison.
+
+## Key Takeaway
+
+A LEFT JOIN's guarantee only survives as long as nothing filters its
+output afterward with a plain WHERE on the right-hand table. WHERE cannot
+distinguish a genuine FALSE from an UNKNOWN caused by NULL -- both get
+dropped identically, with no error to flag that anything happened. Moving
+a condition into the join's ON clause keeps the LEFT JOIN's promise
+intact: every row from the left table stays, matched or not.
+
+## Video Walkthrough
+
+Watch on LinkedIn: [link]
+
+## Files in This Folder
+
+- [DAY-06-Queries.sql](DAY-06-Queries.sql) -- full query file
+- DAY-06-Challenge.png -- challenge prompt
+- DAY-06-Thumbnail.png -- video thumbnail
