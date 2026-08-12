@@ -46,6 +46,8 @@ The result grid showed `movie_id 131` -- Sanju -- with a blank
 
 The data was there. The problem was the way I was comparing against NULL.
 
+Raw dataset: [DAY-02-Raw-data.csv](DAY-02-Raw-data.csv)
+
 ## Concept Covered
 
 `NULL` is not a normal value. It represents missing or unknown data.
