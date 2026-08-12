@@ -79,35 +79,41 @@ descending order.
 
 ## Results
 
-Top of the result set, sorted by annual_revenue descending:
+Top of the full result set (1,182 rows total), sorted by annual_revenue
+descending, with no WHERE filter applied:
 
 | product_code | annual_revenue |
 |-----------------|-----------------|
-| A6120110205      | 10019.7744      |
-| A6119110201      | 9889.0668       |
-| A6120110206      | 9727.2408       |
-| A6119110204      | 9687.1656       |
-| A6018110101      | 9605.4924       |
-| A6019110108      | 9559.9272       |
-| A6119110202      | 9481.2480       |
-| A6018110106      | 9451.0488       |
-| A6019110107      | 9431.9016       |
-| A6018110103      | 9251.7468       |
-| A6119110203      | 9234.7620       |
+| A6120110205      | 10681.6368      |
+| A6120110206      | 10533.0708      |
+| A6119110201      | 10505.6232      |
+| A6121110208      | 10445.7444      |
+| A5921110208      | 10316.7984      |
+| A5921110205      | 10273.3920      |
+| A6019110107      | 10225.5252      |
+| A5921110207      | 10213.8636      |
+| A6018110103      | 10202.5788      |
+| A6018110104      | 10181.6016      |
 
-This is a sample taken directly from the video walkthrough screenshots,
-not an exported CSV -- the original query file for this day wasn't
-saved during the live challenge, so this readme was reconstructed
-afterward from the recorded video and its on-screen results.
+Full output, all 1,182 rows: [DAY-01-results.csv](DAY-01-results.csv)
+
+The same `product_code` appears multiple times throughout this list (for
+example, `A6120110205` shows up again further down at 10019.7744) --
+that's expected, since `fact_gross_price` holds one row per product per
+fiscal year, not one row per product overall. Sorting by annual_revenue
+descending simply lines up every product-year combination from highest
+to lowest, with no deduplication happening at any point in either query.
 
 ## A Note on This Day
 
 This day's queries were rebuilt from a video walkthrough rather than a
-saved SQL file, since the original file wasn't kept during the live
-challenge. The dataset itself is AtliQ Hardware's `fact_gross_price`
-table, reused from an earlier personal project -- the query was written
-quickly at the time specifically to demonstrate this concept clearly,
-not preserved as the exact original challenge submission.
+saved SQL file, since the original query file wasn't kept during the
+live challenge. The full results shown above, however, are a real
+exported CSV, not a reconstruction. The dataset itself is AtliQ
+Hardware's `fact_gross_price` table, reused from an earlier personal
+project -- the query was written quickly at the time specifically to
+demonstrate this concept clearly, not preserved as the exact original
+challenge submission.
 
 ## Key Takeaway
 
@@ -129,4 +135,5 @@ Watch on LinkedIn: [link]
 
 - DAY-01-Challenge.png -- challenge prompt
 - DAY-01-Thumbnail.png -- video thumbnail
-- *(No separate query file or results CSV for this day -- reconstructed from video screenshots, see note above)*
+- [DAY-01-results.csv](DAY-01-results.csv) -- full ORDER BY output, all 1,182 rows
+- *(No separate .sql query file for this day -- queries reconstructed from video screenshots, see note above)*
