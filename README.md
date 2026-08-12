@@ -32,6 +32,23 @@ This was my first time participating in a challenge in this format.
 - **Best streak:** 12 days
 - Every day includes a full readme writeup, the query file, real query output, and a LinkedIn video walkthrough
 
+![SQL 15-Day Deep Dive Leaderboard](assets/SQL-Challenge-Leaderboard-rank.png)
+
+![Daily Activity Tracker](assets/SQL-Challenge-Daily-activity-analysis.png)
+
+The tracker above shows exactly where this went: thirteen marked days out
+of fifteen, two gaps included, no rounding up. This was my first attempt
+at a challenge in this format, and for a good stretch of it I genuinely
+didn't know if I'd finish at all. The names at the top of that leaderboard
+kept a full fifteen-day streak without missing once, and that's a real
+result, worth respecting as one.
+
+What's sitting in this repo is a different kind of result. Not a perfect
+attendance record, but every one of the fifteen concepts eventually worked
+through properly and documented in full, including the two days the live
+streak didn't cover. The leaderboard is a snapshot of one two-week window.
+This repo is what actually stayed after it.
+
 ---
 
 ## Project Description
