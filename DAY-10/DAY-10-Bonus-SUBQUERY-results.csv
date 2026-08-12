@@ -1,0 +1,8 @@
+EXPLAIN
+"-> Filter: (e1.salary > (select #2))  (cost=3.25 rows=30) (actual time=0.236..0.436 rows=15 loops=1)
+    -> Index scan on e1 using PRIMARY  (cost=3.25 rows=30) (actual time=0.055..0.059 rows=31 loops=1)
+    -> Select #2 (subquery in condition; dependent)
+        -> Aggregate: avg(e2.salary)  (cost=0.85 rows=3) (actual time=0.008..0.008 rows=1 loops=31)
+            -> Filter: (e2.department = e1.department)  (cost=0.55 rows=3) (actual time=0.004..0.007 rows=6 loops=31)
+                -> Table scan on e2  (cost=0.55 rows=30) (actual time=0.003..0.005 rows=31 loops=31)
+"

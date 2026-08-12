@@ -1,0 +1,16 @@
+employee_id,name,department,salary
+4,Meena,Sales,55000
+5,Ravi,Sales,60000
+6,Sneha,Sales,65000
+11,Deepak,Analytics,95000
+12,Sachin,Analytics,120000
+16,Lakshmi,Marketing,45000
+17,Vijay,Marketing,50000
+18,Nisha,Marketing,55000
+22,Radha,HR,50000
+23,Ganesh,HR,54000
+24,Swathi,HR,58000
+28,Latha,Finance,78000
+29,"Suresh Kumar",Finance,86000
+30,Bhavani,Finance,96000
+31,Meena,Analytics,120000

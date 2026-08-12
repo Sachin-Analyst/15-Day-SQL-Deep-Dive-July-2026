@@ -1,0 +1,11 @@
+EXPLAIN
+"-> Nested loop inner join  (cost=45.25 rows=40) (actual time=0.083..0.106 rows=15 loops=1)
+    -> Filter: (e2.department is not null)  (cost=3.25 rows=30) (actual time=0.023..0.029 rows=31 loops=1)
+        -> Index scan on e2 using PRIMARY  (cost=3.25 rows=30) (actual time=0.022..0.026 rows=31 loops=1)
+    -> Filter: (e2.salary > da.dept_avg_salary)  (cost=0.75..1.00 rows=1) (actual time=0.002..0.002 rows=0 loops=31)
+        -> Covering index lookup on da using <auto_key0> (department=e2.department)  (actual time=0.000..0.000 rows=1 loops=31)
+            -> Materialize CTE dept_avg  (cost=0.00..0.00 rows=0) (actual time=0.063..0.066 rows=5 loops=1)
+                -> Table scan on <temporary>  (actual time=0.000..0.001 rows=5 loops=1)
+                    -> Aggregate using temporary table  (actual time=0.037..0.038 rows=5 loops=1)
+                        -> Table scan on emp  (cost=3.25 rows=30) (actual time=0.005..0.011 rows=31 loops=1)
+"
