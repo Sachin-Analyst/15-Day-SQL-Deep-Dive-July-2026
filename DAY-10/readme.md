@@ -154,7 +154,7 @@ into an actual number worth acting on.
 
 ## Video Walkthrough
 
-Watch on LinkedIn: [link]
+Watch on LinkedIn: [Video-presentation](https://www.linkedin.com/posts/vishnu-ram-sachin-d-_sql-dataanalytics-codebasics-activity-7483113374675857408-KNfI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-YjK4B1ekkuKaP0cSvVwYi6kAAiCTAQhY)
 
 ## Files in This Folder
 
