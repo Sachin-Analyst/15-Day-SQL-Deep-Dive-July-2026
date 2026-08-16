@@ -143,7 +143,7 @@ multiple queries, only within the query it's attached to.
 
 ## Video Walkthrough
 
-Watch on LinkedIn: [link]
+Watch on LinkedIn: [Video-presentation](https://www.linkedin.com/posts/vishnu-ram-sachin-d-_sql-dataanalytics-codebasicschallenge-activity-7482733515910848512-R9u1?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-YjK4B1ekkuKaP0cSvVwYi6kAAiCTAQhY)
 
 ## Files in This Folder
 
