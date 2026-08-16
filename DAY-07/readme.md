@@ -146,7 +146,7 @@ duplicate-aware by design.
 
 ## Video Walkthrough
 
-Watch on LinkedIn: [link]
+Watch on LinkedIn: [Video-presentation](https://www.linkedin.com/posts/vishnu-ram-sachin-d-_sql-dataanalytics-codebasics-activity-7482025988520947712-yiOa?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-YjK4B1ekkuKaP0cSvVwYi6kAAiCTAQhY)
 
 ## Files in This Folder
 
