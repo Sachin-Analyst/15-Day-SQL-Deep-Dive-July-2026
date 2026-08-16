@@ -147,7 +147,7 @@ absorb a single noisy month instead of being permanently skewed by it.
 
 ## Video Walkthrough
 
-Watch on LinkedIn: [link]
+Watch on LinkedIn: [Voice-over-presentation](https://www.linkedin.com/posts/vishnu-ram-sachin-d-_sql-dataanalytics-codebasics-activity-7484837654769979392-vznx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-YjK4B1ekkuKaP0cSvVwYi6kAAiCTAQhY)
 
 ## Files in This Folder
 
