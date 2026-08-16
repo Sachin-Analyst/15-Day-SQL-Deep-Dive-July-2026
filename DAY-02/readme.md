@@ -218,7 +218,7 @@ can disappear from results even though the row itself exists.
 
 ## Video Walkthrough
 
-Watch on LinkedIn: [link]
+Watch on LinkedIn: [VVideo-presentation](https://www.linkedin.com/posts/vishnu-ram-sachin-d-_sql-dataanalytics-codebasics-activity-7480211240271699968-TL_B?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD-YjK4B1ekkuKaP0cSvVwYi6kAAiCTAQhY)
 
 ## Files in This Folder
 
